@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 
 export default function HomeSearch() {
   const [input, setInput] = useState("");
-  const [randomSearchLoading, setRandomSearchLoading]=useState(false)
+  const [randomSearchLoading, setRandomSearchLoading] = useState(false);
   const router = useRouter();
 
   const handleSubmit = (e) => {
@@ -17,17 +17,16 @@ export default function HomeSearch() {
   };
 
   const randomSearch = async (e) => {
-    setRandomSearchLoading(true)
+    setRandomSearchLoading(true);
     const response = await fetch("https://random-word-api.herokuapp.com/word")
       .then((res) => res.json())
       .then((data) => data[0]);
 
-      if(!response) return;
-      router.push(`/search/web?searchTerm=${response}`)
-      setRandomSearchLoading(false)
+    if (!response) return;
+    router.push(`/search/web?searchTerm=${response}`);
+    setRandomSearchLoading(false);
   };
 
- 
   return (
     <>
       <form
@@ -54,7 +53,7 @@ export default function HomeSearch() {
           onClick={randomSearch}
           className="bg-[#f8f9fa] rounded-md text-sm text-gray-800 hover:ring-gray-200 focus:outline-none active:ring-gray-300 hover:shadow-md w-36 h-10 transition-shadow disabled:opacity-80 disabled:shadow-sm"
         >
-          {randomSearchLoading ? 'Loading...':'I am Feeling lucky'}
+          {randomSearchLoading ? "Loading..." : "I am Feeling lucky"}
         </button>
       </div>
     </>
