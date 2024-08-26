@@ -3,6 +3,7 @@ import Image from "next/image";
 import SearchBox from "./SearchBox";
 import { RiSettings3Line } from "react-icons/ri";
 import { TbGridDots } from "react-icons/tb";
+import SearchHearderOptions from "./SearchHearderOptions";
 
 export default function SearchHearder() {
   return (
@@ -29,6 +30,7 @@ export default function SearchHearder() {
           Sign in
         </button>
       </div>
+      <SearchHearderOptions />
     </div>
   );
 }
