@@ -1,3 +1,5 @@
+'use client'
+
 import SearchHearder from "../components/SearchHearder";
 import "./../globals.css";
 import { Suspense } from 'react'
