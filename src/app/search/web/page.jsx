@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import Link from "next/link";
 import WebSearchResults from './../../components/WebSearchResults';
 
@@ -7,7 +8,7 @@ export default async function WebSearchPage({ searchParams }) {
 
   const response = await fetch(`https://www.googleapis.com/customsearch/v1?key=${process.env.API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${searchParams.searchTerm}'}&start=${startIndex}`);
 
-  // if (!response.ok) throw new Error('Something went wrong');
+  if (!response.ok) throw new Error('Something went wrong');
 
   const data = await response.json();
   const results = data.items;
@@ -24,7 +25,9 @@ export default async function WebSearchPage({ searchParams }) {
 
   return (
     <div>
-      {results && <WebSearchResults results={data} />}
+      <Suspense fallback={<div>Loading...</div>}>
+        {results && <WebSearchResults results={data} />}
+      </Suspense>
     </div>
   )
 }
