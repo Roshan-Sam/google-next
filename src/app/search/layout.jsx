@@ -1,11 +1,14 @@
 import SearchHearder from "../components/SearchHearder";
 import "./../globals.css";
+import { Suspense } from 'react'
 
 export default function layout({ children }) {
   return (
     <div>
       <SearchHearder />
-      {children}
+      <Suspense>
+        {children}
+      </Suspense>
     </div>
   );
 }
